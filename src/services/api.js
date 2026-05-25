@@ -22,8 +22,9 @@ export function processAPIResponse(data) {
         companyLogo: item.company_logo ? `https://internshala.com/uploads/logo/${item.company_logo}` : null,
         profile: item.profile_name || 'Other',
         isWorkFromHome: isWFH,
-        locations: item.location_names && item.location_names.length > 0 
-          ? item.location_names 
+        isPartTime: !!(item.part_time || item.is_part_time),
+        locations: item.location_names && item.location_names.length > 0
+          ? item.location_names
           : (isWFH ? ['Work From Home'] : ['Office']),
         startDate: item.start_date || 'Starts Immediately',
         duration: item.duration || 'Flexible',
@@ -36,7 +37,11 @@ export function processAPIResponse(data) {
         postedOn: item.posted_on || 'Recently',
         deadline: item.application_deadline || 'Apply soon',
         expiringIn: item.expiring_in || '',
-        labels: item.labels_app_in_card || []
+        labels: item.labels_app_in_card || [],
+        activelyHiring: !!(item.is_actively_hiring || item.actively_hiring),
+        isEarlyApplicant: !!(item.is_early_applicant || item.early_applicant),
+        skills: item.skill_sets ? item.skill_sets.map(s => s.skill || s).filter(Boolean) : [],
+        about: item.about_internship || item.description || '',
       };
     });
 }
