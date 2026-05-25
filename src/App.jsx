@@ -9,6 +9,9 @@ import FAQ from './components/FAQ/FAQ';
 import Footer from './components/Footer/Footer';
 import './App.css';
 
+// Dummy translation function to resolve i18n warnings
+const t = (str) => str;
+
 function AppContent() {
   const {
     filteredInternships,
@@ -50,16 +53,16 @@ function AppContent() {
       <main className="is-app-main">
         <div className="is-main-container">
           <nav className="is-breadcrumb" aria-label="Breadcrumb">
-            <span className="is-breadcrumb-item"><a href="/">Home</a></span>
+            <span className="is-breadcrumb-item"><a href="/">{t('Home')}</a></span>
             <span className="is-breadcrumb-sep">›</span>
-            <span className="is-breadcrumb-item is-breadcrumb-active">Internships</span>
+            <span className="is-breadcrumb-item is-breadcrumb-active">{t('Internships')}</span>
           </nav>
 
           <div className="is-page-heading">
             <h1 className="is-page-title">
               {loading ? 'Loading internships…' : `${filteredInternships.length} Total Internships`}
             </h1>
-            <p className="is-page-subtitle">Latest Internships in India</p>
+            <p className="is-page-subtitle">{t('Latest Internships in India')}</p>
           </div>
 
           <div className="is-layout">
@@ -82,6 +85,8 @@ function AppContent() {
         </div>
       </main>
 
+      <Footer />
+
       {isDetailOpen && selectedInternship && (
         <InternshipDetail
           internship={selectedInternship}
@@ -92,8 +97,6 @@ function AppContent() {
           onApply={applyForInternship}
         />
       )}
-
-      <Footer />
     </>
   );
 }
