@@ -56,7 +56,7 @@ export default function Navbar({
           <button className="is-hamburger" onClick={() => setMobileMenuOpen(v => !v)} aria-label="Menu">
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-          <a href="/" className="is-logo-link" onClick={clearFilters}>
+          <a href="https://internshala.com/" className="is-logo-link" target="_blank" rel="noopener noreferrer">
             <img
               src="/internshala_og_image.jpg"
               alt="Internshala"
