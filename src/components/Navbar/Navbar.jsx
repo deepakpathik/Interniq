@@ -19,16 +19,7 @@ export default function Navbar({
       <div className="container navbar">
         {/* Logo */}
         <div className="logo-container" onClick={() => setWishlistMode(false)}>
-          <Briefcase size={24} style={{ stroke: 'url(#primary-gradient)', display: 'inline-block', verticalAlign: 'middle', marginRight: '4px' }} />
-          {/* SVG Gradient definition for Lucide icons */}
-          <svg width="0" height="0">
-            <linearGradient id="primary-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#008BDC" />
-              <stop offset="100%" stopColor="#3b82f6" />
-            </linearGradient>
-          </svg>
-          <span>Interniq</span>
-          <span className="logo-dot"></span>
+          <img src="/internshala_og_image.jpg" alt="Internshala Logo" className="navbar-logo-img" />
         </div>
 
         {/* Action Controls */}

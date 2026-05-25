@@ -220,3 +220,40 @@ h1, h2, h3, h4, h5, h6 {
 .custom-checkbox:focus-visible {
   outline: 2px solid var(--border-focus);
 }
+
+/* App Main Layout Grid */
+.app-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  align-items: start;
+}
+
+.sidebar-container {
+  position: sticky;
+  top: 90px;
+  height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+.feed-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .sidebar-container {
+    position: static;
+    height: auto;
+    overflow-y: visible;
+  }
+}
+
