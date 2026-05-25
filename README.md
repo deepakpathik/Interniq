@@ -6,12 +6,6 @@ This project was built as part of the **SDE (Web) Internship Assignment**.
 
 ---
 
-## 🔗 Project Links
-- **GitHub Repository**: [https://github.com/deepakpathik/Interniq](https://github.com/deepakpathik/Interniq)
-- **Live Deployment Link**: *[Insert Live Link Here]*
-
----
-
 ## ✨ Features & Enhancements
 
 ### 1. Replicated Internshala Search UI
