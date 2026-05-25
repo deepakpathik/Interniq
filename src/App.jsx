@@ -36,6 +36,10 @@ function AppContent() {
 
   const handleCloseDetail = () => setIsDetailOpen(false);
 
+  const textHome = "Home";
+  const textInternships = "Internships";
+  const textLatest = "Latest Internships in India";
+
   return (
     <>
       <Navbar
@@ -50,16 +54,16 @@ function AppContent() {
       <main className="is-app-main">
         <div className="is-main-container">
           <nav className="is-breadcrumb" aria-label="Breadcrumb">
-            <span className="is-breadcrumb-item"><a href="/">Home</a></span>
+            <span className="is-breadcrumb-item"><a href="/">{textHome}</a></span>
             <span className="is-breadcrumb-sep">›</span>
-            <span className="is-breadcrumb-item is-breadcrumb-active">Internships</span>
+            <span className="is-breadcrumb-item is-breadcrumb-active">{textInternships}</span>
           </nav>
 
           <div className="is-page-heading">
             <h1 className="is-page-title">
               {loading ? 'Loading internships…' : `${filteredInternships.length} Total Internships`}
             </h1>
-            <p className="is-page-subtitle">Latest Internships in India</p>
+            <p className="is-page-subtitle">{textLatest}</p>
           </div>
 
           <div className="is-layout">
