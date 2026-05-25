@@ -1,26 +1,35 @@
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
+/* ============================================================
+   INTERNIQ — Design System Tokens
+   Light Mode: Clean blue-slate | Dark Mode: True Black + Neon
+   ============================================================ */
+
 :root {
-  /* Colors - Light Theme (Internshala Inspired Blue & Modern Slates) */
+  /* Primary — Internshala Blue */
   --primary: #008BDC;
   --primary-hover: #0077be;
   --primary-light: #e5f4fd;
   --secondary: #1f2937;
   --accent: #ff9800;
-  
+
+  /* Backgrounds */
   --bg-app: #f8fafc;
   --bg-card: #ffffff;
   --bg-hover: #f1f5f9;
   --bg-header: #ffffff;
-  
+
+  /* Text */
   --text-main: #334155;
   --text-title: #0f172a;
   --text-muted: #64748b;
   --text-light: #94a3b8;
-  
+
+  /* Borders */
   --border-color: #e2e8f0;
   --border-focus: #93c5fd;
-  
+
   /* State Colors */
   --success: #10b981;
   --success-light: #d1fae5;
@@ -50,35 +59,54 @@
   --transition-normal: 0.25s ease;
 }
 
-/* Dark Mode Color Variables Override */
+/* ============================================================
+   DARK MODE — True Black + Electric Neon Palette
+   Primary Neon: Electric Violet #8B5CF6
+   Accent: Cyan #06B6D4 | Pink #EC4899
+   ============================================================ */
 .dark {
-  --primary: #38bdf8;
-  --primary-hover: #7dd3fc;
-  --primary-light: rgba(56, 189, 248, 0.1);
+  /* Neon primary — electric violet */
+  --primary: #8B5CF6;
+  --primary-hover: #a78bfa;
+  --primary-light: rgba(139, 92, 246, 0.12);
   --secondary: #f3f4f6;
-  --accent: #fbbf24;
+  --accent: #06B6D4;
 
-  --bg-app: #0f172a;
-  --bg-card: #1e293b;
-  --bg-hover: #334155;
-  --bg-header: #1e293b;
+  /* True Black backgrounds */
+  --bg-app: #000000;
+  --bg-card: #0d0d0d;
+  --bg-hover: #1a1a1a;
+  --bg-header: #080808;
 
-  --text-main: #cbd5e1;
-  --text-title: #f8fafc;
+  /* Text — high contrast on black */
+  --text-main: #e2e8f0;
+  --text-title: #ffffff;
   --text-muted: #94a3b8;
-  --text-light: #64748b;
+  --text-light: #475569;
 
-  --border-color: #334155;
-  --border-focus: #38bdf8;
+  /* Borders — subtle glow */
+  --border-color: #1e1e1e;
+  --border-focus: #8B5CF6;
 
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-  --shadow-premium: 0 10px 25px -5px rgba(56, 189, 248, 0.1), 0 8px 10px -6px rgba(56, 189, 248, 0.05);
+  /* Adjusted states for dark */
+  --success: #34d399;
+  --success-light: rgba(52, 211, 153, 0.1);
+  --warning: #fbbf24;
+  --warning-light: rgba(251, 191, 36, 0.1);
+  --error: #f87171;
+  --error-light: rgba(248, 113, 113, 0.1);
+
+  /* Neon shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.8);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.7);
+  --shadow-premium: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(139, 92, 246, 0.05);
 }
 
-/* Reset and Globals */
-* {
+/* ============================================================
+   Reset & Globals
+   ============================================================ */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -117,10 +145,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-/* Custom Scrollbar */
+/* ============================================================
+   Custom Scrollbar
+   ============================================================ */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -132,11 +162,17 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-full);
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-light);
 }
 
-/* Base Layout Container */
+/* ============================================================
+   Base Layout
+   ============================================================ */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -144,7 +180,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 1.5rem;
 }
 
-/* Common Layout Utilities */
 .flex-center {
   display: flex;
   align-items: center;
@@ -157,14 +192,12 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
 }
 
-/* Key Shimmer Animation for Skeletons */
+/* ============================================================
+   Shimmer Skeleton
+   ============================================================ */
 @keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 .shimmer {
@@ -173,23 +206,26 @@ h1, h2, h3, h4, h5, h6 {
   animation: shimmer 1.5s infinite;
 }
 
-/* Fade in elements smoothly */
+.dark .shimmer {
+  background: linear-gradient(90deg, #111 25%, #1e1e1e 50%, #111 75%);
+  background-size: 200% 100%;
+}
+
+/* ============================================================
+   Fade In Animation
+   ============================================================ */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .fade-in {
   animation: fadeIn var(--transition-normal) forwards;
 }
 
-/* Custom Checkbox/Radio Styling Helper */
+/* ============================================================
+   Custom Checkbox
+   ============================================================ */
 .custom-checkbox {
   appearance: none;
   width: 18px;
@@ -221,39 +257,15 @@ h1, h2, h3, h4, h5, h6 {
   outline: 2px solid var(--border-focus);
 }
 
-/* App Main Layout Grid */
-.app-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-  align-items: start;
+/* ============================================================
+   Dark Mode Neon Glow Utilities
+   ============================================================ */
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(139, 92, 246, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.7), 0 0 40px rgba(139, 92, 246, 0.2); }
 }
 
-.sidebar-container {
-  position: sticky;
-  top: 90px;
-  height: calc(100vh - 110px);
-  overflow-y: auto;
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(139, 92, 246, 0.5); }
+  50% { border-color: rgba(139, 92, 246, 1); }
 }
-
-.feed-container {
-  display: flex;
-  flex-direction: column;
-}
-
-@media (max-width: 1024px) {
-  .app-layout {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-  
-  .sidebar-container {
-    position: static;
-    height: auto;
-    overflow-y: visible;
-  }
-}
-
