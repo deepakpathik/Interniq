@@ -28,6 +28,10 @@ function AppContent() {
     applyForInternship,
   } = useApp();
 
+  React.useEffect(() => {
+    document.title = `${filteredInternships.length} Internships: Summer Internships 2026 | Paid Internships... Interniq`;
+  }, [filteredInternships.length]);
+
   const handleCloseDetail = () => setIsDetailOpen(false);
 
   return (
