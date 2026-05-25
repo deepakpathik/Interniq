@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import FilterSidebar from './components/FilterSidebar/FilterSidebar';
 import InternshipDetail from './components/InternshipDetail/InternshipDetail';
 import FAQ from './components/FAQ/FAQ';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 function AppContent() {
@@ -91,6 +92,8 @@ function AppContent() {
           onApply={applyForInternship}
         />
       )}
+
+      <Footer />
     </>
   );
 }

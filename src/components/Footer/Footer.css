@@ -1,0 +1,162 @@
+/* ================================
+   Internshala Footer Component
+   ================================ */
+
+.is-footer {
+  background-color: #333333;
+  color: #dddddd;
+  padding: 3rem 0 1.5rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.dark .is-footer {
+  background-color: #0a0a0a;
+  border-top: 1px solid #1a1a1a;
+}
+
+.is-footer-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.is-footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.is-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.is-footer-heading {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.is-footer-badge {
+  background-color: #f59e0b;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.is-footer-link {
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.15s ease;
+}
+
+.is-footer-link:hover {
+  color: #ffffff;
+}
+
+.is-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #444444;
+  padding-top: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.dark .is-footer-bottom {
+  border-top-color: #1f1f1f;
+}
+
+.is-footer-bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.is-app-store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #555555;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: background-color 0.15s ease;
+}
+
+.is-app-store-btn:hover {
+  background-color: #444444;
+}
+
+.is-app-store-btn img {
+  height: 18px;
+  object-fit: contain;
+}
+
+.is-footer-bottom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.is-footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.is-footer-socials a {
+  color: #aaaaaa;
+  transition: color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.is-footer-socials a:hover {
+  color: #ffffff;
+}
+
+.is-footer-copyright {
+  font-size: 0.85rem;
+  color: #aaaaaa;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .is-footer-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .is-footer-links-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .is-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .is-footer-bottom-right {
+    align-items: flex-start;
+  }
+  
+  .is-app-store-btn span {
+    display: none;
+  }
+}
