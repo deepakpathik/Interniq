@@ -23,7 +23,7 @@ export function AppProvider({ children }) {
   
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
-    return savedTheme ? savedTheme === 'dark' : true;
+    return savedTheme ? savedTheme === 'dark' : false;
   });
 
   const [wishlist, setWishlist] = useState(() => {
