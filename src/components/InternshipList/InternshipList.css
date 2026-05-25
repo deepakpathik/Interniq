@@ -1,0 +1,75 @@
+.internship-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.list-message {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  border-radius: 12px;
+  background-color: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.dark .list-message {
+  background-color: #0d0d0d;
+  border-color: #1e1e1e;
+  color: #3a3a5a;
+}
+
+.error-message {
+  color: #ef4444;
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.dark .error-message {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.3);
+  background-color: rgba(248, 113, 113, 0.05);
+}
+
+.is-empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dark .is-empty-state {
+  background-color: #0d0d0d;
+  border-color: #1e1e1e;
+}
+
+.is-empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.is-empty-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-title);
+  font-family: 'Outfit', sans-serif;
+}
+
+.dark .is-empty-title {
+  color: #ffffff;
+}
+
+.is-empty-sub {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.dark .is-empty-sub {
+  color: #3a3a5a;
+}
