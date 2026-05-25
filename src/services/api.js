@@ -4,7 +4,7 @@ import { MOCK_INTERNSHIPS_DATA } from './mockData';
  * Service to handle data fetching from Internshala API and formatting the response
  */
 
-const API_URL = 'https://internshala.com/hiring/search';
+const API_URL = import.meta.env.VITE_API_URL;
 
 /**
  * Parses and maps the raw API response into a standard format
@@ -61,6 +61,9 @@ export function processAPIResponse(data) {
  */
 export async function fetchInternships() {
   try {
+    if (!API_URL) {
+      throw new Error('API URL is not defined in environment variables.');
+    }
     // Attempt standard fetch request
     const response = await fetch(API_URL);
     if (!response.ok) {
