@@ -18,7 +18,7 @@ export function processAPIResponse(data) {
   }
 
   return internship_ids
-    .map(id => internships_meta[id])
+    .map(id => Object.prototype.hasOwnProperty.call(internships_meta, id) ? Reflect.get(internships_meta, id) : null)
     .filter(Boolean)
     .map(item => {
       // Clean and normalize stipend values
