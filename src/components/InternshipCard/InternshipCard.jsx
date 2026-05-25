@@ -1,22 +1,29 @@
 import React from 'react';
-import { MapPin, Briefcase } from 'lucide-react';
+import { MapPin, Play, Calendar, DollarSign, Clock, TrendingUp, Zap } from 'lucide-react';
 import './InternshipCard.css';
 
-/**
- * InternshipCard Component (Base Layout - Commit 9)
- * Renders the basic structure of an internship listing card including title,
- * company name, logo placeholder, and basic location details.
- */
+const TEXT_WFH = 'Work From Home';
+const LABEL_START_DATE = 'Start Date';
+const LABEL_DURATION = 'Duration';
+const LABEL_STIPEND = 'Stipend';
+
 export default function InternshipCard({ internship, onClick }) {
   const {
     title,
     company,
     companyLogo,
     locations,
-    isWorkFromHome
+    isWorkFromHome,
+    startDate,
+    duration,
+    stipendText,
+    postedOn,
+    expiringIn,
+    isPremium,
+    isPpo,
+    ppoLabel
   } = internship;
 
-  // Get initials for the fallback logo
   const companyInitials = company
     ? company.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
     : 'CO';
@@ -24,13 +31,11 @@ export default function InternshipCard({ internship, onClick }) {
   return (
     <div className="internship-card" onClick={onClick}>
       <div className="card-header">
-        {/* Title and Company Area */}
         <div className="card-title-area">
           <h4 className="card-title">{title}</h4>
           <span className="card-company">{company}</span>
         </div>
 
-        {/* Company Logo / Fallback */}
         <div className="card-logo-container">
           {companyLogo ? (
             <img 
@@ -38,7 +43,6 @@ export default function InternshipCard({ internship, onClick }) {
               alt={`${company} logo`} 
               className="card-logo-img"
               onError={(e) => {
-                // If live URL fails to load, fallback to text avatar
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';
               }}
@@ -53,7 +57,6 @@ export default function InternshipCard({ internship, onClick }) {
         </div>
       </div>
 
-      {/* Basic Location / Type Details */}
       <div className="card-basic-details">
         <div className="card-detail-item">
           <span className="card-detail-icon"><MapPin size={16} /></span>
@@ -61,8 +64,62 @@ export default function InternshipCard({ internship, onClick }) {
         </div>
         {isWorkFromHome && (
           <div className="card-detail-item">
-            <span className="card-detail-icon"><Briefcase size={16} /></span>
-            <span>Work From Home</span>
+            <span>•</span>
+            <span>{TEXT_WFH}</span>
+          </div>
+        )}
+      </div>
+
+      <div className="card-details-grid">
+        <div className="card-detail-column">
+          <div className="card-detail-label">
+            <Play size={12} />
+            <span>{LABEL_START_DATE}</span>
+          </div>
+          <span className="card-detail-value">{startDate}</span>
+        </div>
+        
+        <div className="card-detail-column">
+          <div className="card-detail-label">
+            <Calendar size={12} />
+            <span>{LABEL_DURATION}</span>
+          </div>
+          <span className="card-detail-value">{duration}</span>
+        </div>
+
+        <div className="card-detail-column">
+          <div className="card-detail-label">
+            <DollarSign size={12} />
+            <span>{LABEL_STIPEND}</span>
+          </div>
+          <span className="card-detail-value">{stipendText}</span>
+        </div>
+      </div>
+
+      <div className="card-badges-row">
+        {isPpo && (
+          <div className="card-badge ppo-badge">
+            <TrendingUp size={12} />
+            <span>{ppoLabel}</span>
+          </div>
+        )}
+        {isPremium && (
+          <div className="card-badge premium-badge">
+            <Zap size={12} fill="currentColor" />
+            <span>Premium</span>
+          </div>
+        )}
+      </div>
+
+      <div className="card-footer">
+        <div className="card-footer-left">
+          <span className="card-posted-date">{postedOn}</span>
+        </div>
+        
+        {expiringIn && (
+          <div className="card-deadline">
+            <Clock size={12} />
+            <span>{expiringIn}</span>
           </div>
         )}
       </div>

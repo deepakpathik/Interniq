@@ -2,11 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Search, X, Briefcase, MapPin } from 'lucide-react';
 import './SearchBar.css';
 
-/**
- * SearchBar Component
- * Renders the search input with real-time query updates and an autocomplete dropdown
- * suggesting matching profiles and locations.
- */
 export default function SearchBar({
   searchQuery = '',
   setSearchQuery,
@@ -18,7 +13,6 @@ export default function SearchBar({
   const [filteredLocations, setFilteredLocations] = useState([]);
   const dropdownRef = useRef(null);
 
-  // Close dropdown on click outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -29,7 +23,6 @@ export default function SearchBar({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Update suggestions when query changes
   useEffect(() => {
     const q = searchQuery.toLowerCase().trim();
     if (!q) {
@@ -77,7 +70,6 @@ export default function SearchBar({
         )}
       </div>
 
-      {/* Suggestions Dropdown */}
       {showDropdown && hasSuggestions && (
         <div className="search-suggestions-dropdown">
           {filteredProfiles.length > 0 && (

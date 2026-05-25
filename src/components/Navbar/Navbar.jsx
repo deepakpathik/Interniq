@@ -1,11 +1,7 @@
 import React from 'react';
-import { Heart, Sun, Moon, Briefcase } from 'lucide-react';
+import { Heart, Sun, Moon } from 'lucide-react';
 import './Navbar.css';
 
-/**
- * Navbar Component
- * Renders the top navigation header with dark mode and wishlist toggles.
- */
 export default function Navbar({
   listingsCount = 0,
   wishlistCount = 0,
@@ -17,19 +13,15 @@ export default function Navbar({
   return (
     <header className="navbar-wrapper">
       <div className="container navbar">
-        {/* Logo */}
         <div className="logo-container" onClick={() => setWishlistMode(false)}>
           <img src="/internshala_og_image.jpg" alt="Internshala Logo" className="navbar-logo-img" />
         </div>
 
-        {/* Action Controls */}
         <div className="nav-actions">
-          {/* Active Listings Counter Badge */}
           <div className="listings-badge">
             {listingsCount} {listingsCount === 1 ? 'Internship' : 'Internships'} Available
           </div>
 
-          {/* Toggle Wishlist Button */}
           <button
             className={`nav-btn ${isWishlistMode ? 'active' : ''}`}
             onClick={() => setWishlistMode(!isWishlistMode)}
@@ -42,7 +34,6 @@ export default function Navbar({
             )}
           </button>
 
-          {/* Theme Toggle Button */}
           <button
             className="nav-btn theme-toggle-btn"
             onClick={toggleDarkMode}
