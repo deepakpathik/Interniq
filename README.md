@@ -36,6 +36,32 @@ As per the assignment requirements, filtering is handled entirely on the client-
 * **Icons**: React Icons (Lucide React / FontAwesome)
 * **API Endpoint**: `https://internshala.com/hiring/search` (fetches the live internship listings)
 
+## 🏗️ Architecture Diagram
+
+Below is a high-level representation of the React component tree and global state management flow:
+
+```mermaid
+graph TD
+    A[App Component] --> B[(AppContext / Global State)]
+    A --> C[Navbar]
+    A --> D[FilterSidebar]
+    A --> E[SearchBar]
+    A --> F[InternshipList]
+    A --> G[FAQ]
+    A --> H[Footer]
+    
+    B -->|Provides Theme & Wishlist| C
+    B -->|Provides Filters State| D
+    B -->|Provides Search State| E
+    B -->|Provides Filtered Data| F
+    
+    F --> I[InternshipCard]
+    I -->|On Click| J[InternshipDetail Modal]
+    B -->|Provides Apply/Save Actions| J
+    
+    K((Internshala API)) -.->|Fetches Listings| B
+```
+
 ---
 
 ## 📁 Project Structure
