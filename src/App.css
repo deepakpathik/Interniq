@@ -1,0 +1,131 @@
+/* ========================
+   Internshala App Layout
+   ======================== */
+
+.is-app-main {
+  background-color: var(--bg-app);
+  min-height: calc(100vh - 64px);
+  transition: background-color 0.25s ease;
+}
+
+.is-main-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 3rem;
+}
+
+/* Breadcrumb */
+.is-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.is-breadcrumb-item a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.dark .is-breadcrumb-item a {
+  color: #3a3a5a;
+}
+
+.is-breadcrumb-item a:hover {
+  color: #008BDC;
+}
+
+.dark .is-breadcrumb-item a:hover {
+  color: #8B5CF6;
+}
+
+.is-breadcrumb-sep {
+  color: #cbd5e1;
+}
+
+.dark .is-breadcrumb-sep {
+  color: #2a2a2a;
+}
+
+.is-breadcrumb-active {
+  color: #008BDC;
+  font-weight: 600;
+}
+
+.dark .is-breadcrumb-active {
+  color: #8B5CF6;
+}
+
+/* Page heading */
+.is-page-heading {
+  margin-bottom: 1.25rem;
+}
+
+.is-page-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-title);
+  font-family: 'Outfit', sans-serif;
+}
+
+.dark .is-page-title {
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.is-page-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.dark .is-page-subtitle {
+  color: #3a3a5a;
+}
+
+/* 2-column Layout */
+.is-layout {
+  display: grid;
+  grid-template-columns: 256px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.is-sidebar {
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.is-feed {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .is-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .is-sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 600px) {
+  .is-main-container {
+    padding: 0.75rem 0.75rem 2rem;
+  }
+
+  .is-page-title {
+    font-size: 1.2rem;
+  }
+}

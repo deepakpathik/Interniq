@@ -1,17 +1,34 @@
 import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import Navbar from './components/Navbar/Navbar';
+import InternshipList from './components/InternshipList/InternshipList';
+import SearchBar from './components/SearchBar/SearchBar';
+import FilterSidebar from './components/FilterSidebar/FilterSidebar';
+import InternshipDetail from './components/InternshipDetail/InternshipDetail';
+import './App.css';
 
 function AppContent() {
   const {
     filteredInternships,
     loading,
-    wishlist,
     isWishlistMode,
     setIsWishlistMode,
     isDarkMode,
-    toggleDarkMode
+    toggleDarkMode,
+    searchQuery,
+    setSearchQuery,
+    popularProfiles,
+    popularLocations,
+    wishlist,
+    toggleWishlist,
+    selectedInternship,
+    isDetailOpen,
+    setIsDetailOpen,
+    appliedInternships,
+    applyForInternship,
   } = useApp();
+
+  const handleCloseDetail = () => setIsDetailOpen(false);
 
   return (
     <>
@@ -24,30 +41,49 @@ function AppContent() {
         toggleDarkMode={toggleDarkMode}
       />
 
-      <main className="container app-layout">
-        <aside className="sidebar-container">
-          <div style={{ padding: '1.5rem', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)' }}>
-            <h3 style={{ marginBottom: '0.5rem' }}>Filters Section</h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Will be added step-by-step in Commits 16 to 21.</p>
-          </div>
-        </aside>
+      <main className="is-app-main">
+        <div className="is-main-container">
+          <nav className="is-breadcrumb" aria-label="Breadcrumb">
+            <span className="is-breadcrumb-item"><a href="/">Home</a></span>
+            <span className="is-breadcrumb-sep">›</span>
+            <span className="is-breadcrumb-item is-breadcrumb-active">Internships</span>
+          </nav>
 
-        <section className="feed-container">
-          <div style={{ padding: '1.5rem', marginBottom: '1.5rem', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)' }}>
-            <h3 style={{ marginBottom: '0.5rem' }}>SearchBar</h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Will be added in Commit 14.</p>
+          <div className="is-page-heading">
+            <h1 className="is-page-title">
+              {loading ? 'Loading internships…' : `${filteredInternships.length} Total Internships`}
+            </h1>
+            <p className="is-page-subtitle">Latest Internships in India</p>
           </div>
 
-          <div style={{ padding: '1.5rem', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)' }}>
-            <h3 style={{ marginBottom: '0.5rem' }}>Feed Listings</h3>
-            {loading ? (
-              <p>Loading internships...</p>
-            ) : (
-              <p>Found {filteredInternships.length} internships</p>
-            )}
+          <div className="is-layout">
+            <aside className="is-sidebar">
+              <FilterSidebar />
+            </aside>
+
+            <section className="is-feed">
+              <SearchBar
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                popularProfiles={popularProfiles}
+                popularLocations={popularLocations}
+              />
+              <InternshipList />
+            </section>
           </div>
-        </section>
+        </div>
       </main>
+
+      {isDetailOpen && selectedInternship && (
+        <InternshipDetail
+          internship={selectedInternship}
+          onClose={handleCloseDetail}
+          isSaved={wishlist.includes(selectedInternship.id)}
+          onSave={toggleWishlist}
+          isApplied={appliedInternships.includes(selectedInternship.id)}
+          onApply={applyForInternship}
+        />
+      )}
     </>
   );
 }
@@ -61,4 +97,3 @@ function App() {
 }
 
 export default App;
-
