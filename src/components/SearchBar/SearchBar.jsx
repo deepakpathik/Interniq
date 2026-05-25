@@ -26,16 +26,12 @@ export default function SearchBar({
   useEffect(() => {
     const q = searchQuery.toLowerCase().trim();
     if (!q) {
-      setFilteredProfiles(popularProfiles.slice(0, 3));
-      setFilteredLocations(popularLocations.slice(0, 3));
+      setFilteredProfiles(popularProfiles.slice(0, 4));
+      setFilteredLocations(popularLocations.slice(0, 4));
       return;
     }
-
-    const matchesP = popularProfiles.filter(p => p.toLowerCase().includes(q));
-    const matchesL = popularLocations.filter(l => l.toLowerCase().includes(q));
-
-    setFilteredProfiles(matchesP.slice(0, 3));
-    setFilteredLocations(matchesL.slice(0, 3));
+    setFilteredProfiles(popularProfiles.filter(p => p.toLowerCase().includes(q)).slice(0, 4));
+    setFilteredLocations(popularLocations.filter(l => l.toLowerCase().includes(q)).slice(0, 4));
   }, [searchQuery, popularProfiles, popularLocations]);
 
   const selectSuggestion = (value) => {
@@ -46,58 +42,66 @@ export default function SearchBar({
   const hasSuggestions = filteredProfiles.length > 0 || filteredLocations.length > 0;
 
   return (
-    <div className="search-bar-container" ref={dropdownRef}>
-      <div className="search-input-wrapper">
-        <div className="search-icon">
-          <Search size={20} />
-        </div>
+    <div className="is-search-container" ref={dropdownRef}>
+      <div className="is-search-inner">
+        <span className="is-search-icon-left">
+          <Search size={18} />
+        </span>
         <input
           type="text"
-          className="search-input"
-          placeholder="Search by profile, company name, or location..."
+          id="keyword-search"
+          className="is-search-input"
+          placeholder="e.g. Design, Mumbai, Infosys"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setShowDropdown(true)}
+          autoComplete="off"
         />
         {searchQuery && (
           <button
-            className="clear-search-btn"
+            className="is-search-clear"
             onClick={() => setSearchQuery('')}
             title="Clear search"
+            aria-label="Clear search"
           >
-            <X size={18} />
+            <X size={16} />
           </button>
         )}
+        <button className="is-search-btn" type="button" aria-label="Search">
+          <Search size={16} />
+          <span>Search</span>
+        </button>
       </div>
 
       {showDropdown && hasSuggestions && (
-        <div className="search-suggestions-dropdown">
+        <div className="is-search-dropdown" id="search-suggestions">
           {filteredProfiles.length > 0 && (
-            <div>
-              <div className="suggestion-section-title">Profiles</div>
+            <div className="is-suggestion-section">
+              <div className="is-suggestion-heading">Profiles</div>
               {filteredProfiles.map((profile) => (
                 <div
                   key={`profile-${profile}`}
-                  className="suggestion-item"
+                  className="is-suggestion-item"
                   onClick={() => selectSuggestion(profile)}
+                  id={`suggestion-profile-${profile.replace(/\s+/g, '-').toLowerCase()}`}
                 >
-                  <span className="suggestion-icon"><Briefcase size={16} /></span>
+                  <Briefcase size={14} className="is-suggestion-icon" />
                   <span>{profile}</span>
                 </div>
               ))}
             </div>
           )}
-
           {filteredLocations.length > 0 && (
-            <div>
-              <div className="suggestion-section-title">Locations</div>
+            <div className="is-suggestion-section">
+              <div className="is-suggestion-heading">Locations</div>
               {filteredLocations.map((location) => (
                 <div
                   key={`location-${location}`}
-                  className="suggestion-item"
+                  className="is-suggestion-item"
                   onClick={() => selectSuggestion(location)}
+                  id={`suggestion-location-${location.replace(/\s+/g, '-').toLowerCase()}`}
                 >
-                  <span className="suggestion-icon"><MapPin size={16} /></span>
+                  <MapPin size={14} className="is-suggestion-icon" />
                   <span>{location}</span>
                 </div>
               ))}
