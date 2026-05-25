@@ -5,6 +5,7 @@ import InternshipList from './components/InternshipList/InternshipList';
 import SearchBar from './components/SearchBar/SearchBar';
 import FilterSidebar from './components/FilterSidebar/FilterSidebar';
 import InternshipDetail from './components/InternshipDetail/InternshipDetail';
+import FAQ from './components/FAQ/FAQ';
 import './App.css';
 
 function AppContent() {
@@ -75,6 +76,8 @@ function AppContent() {
               <InternshipList />
             </section>
           </div>
+
+          <FAQ />
         </div>
       </main>
 
