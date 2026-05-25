@@ -105,13 +105,29 @@ export default function FilterSidebar() {
 
   return (
     <>
-      <button className="is-filter-toggle-btn" onClick={toggleSidebar} id="filter-toggle-btn">
-        <SlidersHorizontal size={16} />
-        <span>Filters</span>
-        {activeFilterCount > 0 && (
-          <span className="is-filter-active-count">{activeFilterCount}</span>
-        )}
-      </button>
+      <div className="is-mobile-filter-chips">
+        <button className="is-filter-chip is-chip-primary" onClick={toggleSidebar} id="filter-toggle-btn">
+          <span>Filters</span>
+          <SlidersHorizontal size={14} />
+          {activeFilterCount > 0 && (
+            <span className="is-filter-active-count">{activeFilterCount}</span>
+          )}
+        </button>
+        <button className="is-filter-chip" onClick={toggleSidebar}>Profile</button>
+        <button className="is-filter-chip" onClick={toggleSidebar}>Location</button>
+        <button 
+          className={`is-filter-chip ${isWFH ? 'is-chip-active' : ''}`}
+          onClick={() => setIsWFH(!isWFH)}
+        >
+          Work from home
+        </button>
+        <button 
+          className={`is-filter-chip ${isPartTime ? 'is-chip-active' : ''}`}
+          onClick={() => setIsPartTime(!isPartTime)}
+        >
+          Part-time
+        </button>
+      </div>
 
       <div className={`is-filter-sidebar ${isOpen ? 'is-filter-open' : ''}`} id="filter-sidebar">
         <div className="is-filter-header">
