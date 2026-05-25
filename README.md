@@ -69,21 +69,28 @@ graph TD
 ```bash
 Interniq/
 ├── public/                  # Static assets
+├── scripts/                 # Utility scripts
 ├── src/
 │   ├── assets/              # Logos, images, and visual assets
 │   ├── components/          # Reusable UI components
+│   │   ├── FAQ/             # FAQ Accordion component
 │   │   ├── FilterSidebar/   # Client-side filtering panel
+│   │   ├── Footer/          # Application Footer
 │   │   ├── InternshipCard/  # Individual internship card
+│   │   ├── InternshipDetail/# Expanded modal for internship
 │   │   ├── InternshipList/  # List container for cards
 │   │   ├── Navbar/          # Navigation header
 │   │   └── SearchBar/       # Real-time search bar
-│   ├── hooks/               # Custom hooks (e.g., useLocalStorage)
+│   ├── context/             # Global Context API (AppContext)
+│   ├── hooks/               # Custom hooks
 │   ├── services/            # API integration & data fetching logic
-│   ├── styles/              # Global styles & design tokens
-│   ├── App.jsx              # Main application entry component
+│   ├── styles/              # Global styles & CSS variables
+│   ├── App.jsx              # Main application layout component
 │   └── main.jsx             # React DOM rendering
+├── tests/                   # End-to-end and puppeteer tests
 ├── README.md                # Project documentation
 ├── package.json             # Dependencies and scripts
+├── vercel.json              # Vercel deployment & routing config
 └── vite.config.js           # Development server and bundler config
 ```
 
